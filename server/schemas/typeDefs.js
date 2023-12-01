@@ -4,6 +4,25 @@ type User {
     username: String
     email: String
     password: String
+    workouts: [Workout]
+}
+
+type Workout {
+    _id: ID
+    day: String
+    bodyPart: String
+    exercises: [Exercise]
+}
+
+type Exercise {
+    _id: ID
+    name: String
+    sets: Int
+    reps: Int
+    weight: Int
+    duration: Int
+    equipment: String
+    target: String
 }
 
 type Auth {
