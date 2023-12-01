@@ -1,32 +1,96 @@
 import axios from 'axios';
 
-const getBodyPartList = () => {
-  return axios.get('https://exercisedb.p.rapidapi.com/exercises/bodyPartList');
+const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '2e845e8009mshc295949c74088fcp167a1djsn8494e03546dc',
+      'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+    }
+  };
+
+const getBodyPartList = async () => {
+    options.url = 'https://exercisedb.p.rapidapi.com/exercises/bodyPartList';
+
+    try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    };
 };
 
-const getMuscleList = () => {
-    return axios.get('https://exercisedb.p.rapidapi.com/exercises/targetList');
+const getMuscleList = async () => {
+    options.url = 'https://exercisedb.p.rapidapi.com/exercises/targetList';
+
+    try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    };
 };
 
-const getEquipList = () => {
-    return axios.get('https://exercisedb.p.rapidapi.com/exercises/equipmentList');
+const getEquipList = async () => {
+    options.url = 'https://exercisedb.p.rapidapi.com/exercises/equipmentList';
+
+    try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    };
 };
 
-const getExercises = () => {
-    return axios.get('https://exercisedb.p.rapidapi.com/exercises');
+const getExercises = async () => {
+    options.url = 'https://exercisedb.p.rapidapi.com/exercises';
+
+    try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    };
 };
 
-const getExercisebyId = (id) => {
-    return axios.get('https://exercisedb.p.rapidapi.com/exercises/exercise/' + id);
+const getExercisebyId = async (id) => {
+    options.url = ('https://exercisedb.p.rapidapi.com/exercises/exercise/' + id);
+
+    try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    };
 };
 
 // Text search of exercise names
-const getExercisesbyName = (query) => {
-    return axios.get('https://exercisedb.p.rapidapi.com/exercises/name/' + query);
+const getExercisesbyName = async (query) => {
+    options.url = ('https://exercisedb.p.rapidapi.com/exercises/name/' + query);
+
+    try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    };
 };
 
-const getExercisesbyBodyPart = (bodypart) => {
-    return axios.get('https://exercisedb.p.rapidapi.com/exercises/bodyPart/' + bodypart); 
+const getExercisesbyBodyPart = async (bodypart) => {
+    options.url = ('https://exercisedb.p.rapidapi.com/exercises/bodyPart/' + bodypart);
+
+    try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    };
 };
 // valid bodyparts: 
 // // "back"
@@ -41,8 +105,16 @@ const getExercisesbyBodyPart = (bodypart) => {
 // // "waist"
 
 
-const getExercisesbyMuscle = (muscle) => {
-    return axios.get('https://exercisedb.p.rapidapi.com/exercises/target/' + muscle); 
+const getExercisesbyMuscle = async (muscle) => {
+    options.url = ('https://exercisedb.p.rapidapi.com/exercises/target/' + muscle);
+
+    try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    };
 };
 // valid muscles:
 // // "abductors"
@@ -66,8 +138,16 @@ const getExercisesbyMuscle = (muscle) => {
 // // "upper%20back"
 
 
-const getExercisesbyEquip = (equip) => {
-    return axios.get('https://exercisedb.p.rapidapi.com/exercises/equipment/' + equip); 
+const getExercisesbyEquip = async (equip) => {
+    options.url = ('https://exercisedb.p.rapidapi.com/exercises/equipment/' + equip);
+
+    try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    };
 };
 // valid equipment:
 // // "assisted"
