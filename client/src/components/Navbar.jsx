@@ -1,8 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Auth from '../utils/auth';
 
 const Navbar = () => {
+  const isLoggedIn = Auth.loggedIn();
   return (
     <nav className="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
       <div className="container-fluid">
@@ -26,17 +27,29 @@ const Navbar = () => {
               <a className="nav-link active" aria-current="page" href="/home">
                 Home
               </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/login">
-                Login
-              </a>
-            </li>
+            </li>   
+      {isLoggedIn ? (
+        <>
             <li className="nav-item">
               <a className="nav-link" href="/profile">
                Profile
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/" onClick={() => Auth.logout()}>
+                Logout
+              </a>
+            </li>
+        </>
+      ) : (
+        <>
+            <li className="nav-item">
+              <a className="nav-link" href="/login">
+                Login
+              </a>
+            </li>
+            </>
+      )}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
