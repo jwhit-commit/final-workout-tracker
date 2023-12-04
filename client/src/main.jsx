@@ -2,8 +2,11 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import React from 'react';
 import App from './App.jsx';
+import Profile from './pages/Profile.jsx';
 import Home from './pages/Home';
-
+import NotFound from './components/NotFound.jsx';
+import Signup from './pages/Signup.jsx';
+import Login from './pages/Login.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -13,7 +16,23 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      }, 
+      {
+        path: '/home',
+        element: <Home />
       },
+      {
+        path: '/profile',
+        element: <Profile />
+      },
+      {
+        path: '/signup',
+        element: <Signup />
+      },
+      {
+        path: '/login',
+        element: <Login/>
+      }
     ],
   },
 ]);
@@ -21,3 +40,4 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
 );
+
