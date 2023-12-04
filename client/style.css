@@ -1,0 +1,27 @@
+/* Add this to your style.css file or within a <style> tag in your HTML document */
+
+/* Style for the workout image */
+.jumbotron img {
+    max-width: 100%; /* Ensure the image does not exceed its container width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Center the image within its container */
+    margin: 0 auto; /* Center the image horizontally */
+  }
+  
+  /* Style for the text below the image */
+  .jumbotron h4, .jumbotron h1, .jumbotron p, .jumbotron a.btn {
+    text-align: center; /* Center align the text */
+    margin: 20px 0; /* Add some margin for spacing */
+  }
+  
+  /* Additional style for the button to make it more visually appealing */
+  .jumbotron a.btn {
+    background-color: #007bff; /* Bootstrap primary color */
+    border-color: #007bff;
+  }
+  
+  .jumbotron a.btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    border-color: #0056b3;
+  }
+  
