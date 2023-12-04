@@ -1,4 +1,5 @@
-const { User } = require('../models');
+const { ConnectionStates } = require('mongoose');
+const { User, Workout} = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -14,27 +15,30 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        workouts: async (parent, { username }) => {
-            const params = username ? { username } : {};
-            return Workout.find(params).sort({ createdAt: -1 });
-        },
-        workout: async (parent, { _id }) => {
-            return Workout.findOne({ _id: workoutId });
-        },
+        // workouts: async (parent, { username }) => {
+        //     const params = username ? { username } : {};
+        //     return Workout.find(params).sort({ createdAt: -1 });
+        // },
+        // workout: async (parent, { _id }) => {
+        //     return Workout.findOne({ _id: workoutId });
+        // },
     },
 
     Mutation: {
-        addWorkout: async (exercises) => {
-            if (context.user) {
-                const workout = new Workout ({ exercises });
+        addWorkout: async (parent, { bodyPart, exercises }, context) => {
+            // if (context.user) {
+                const workout = await Workout.create({ bodyPart, exercises });
 
-                await User.findByIdAndUpdate(context.user._id, {
-                    $push: { workouts: workout},
+                await User.findByIdAndUpdate({_id: context.user._id},
+                // await User.findByIdAndUpdate({_id: "656a45d6b67b02be5a4e1622"},
+
+                {
+                    $push: { workouts: workout._id},
                 });
 
                 return workout;
-            }
-            throw new AuthenticationError('You need to be logged in!');
+            // }
+            // throw new AuthenticationError('You need to be logged in!');
         },
         updateWorkout: async (parent, { _id, exercises }) => {
             const updatedWorkout = await Workout.findOneAndUpdate(

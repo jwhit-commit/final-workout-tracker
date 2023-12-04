@@ -11,11 +11,10 @@ type Workout {
     _id: ID
     day: String
     bodyPart: String
-    exercises: [Exercise]
+  #  exercises: [Exercise]
 }
 
-type Exercise {
-    _id: ID
+input Exercise {
     name: String
     sets: Int
     reps: Int
@@ -38,6 +37,8 @@ type Query {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addWorkout(bodyPart: String!, exercises: [Exercise]): Workout
+    updateWorkout(_id: ID!, exercises: [Exercise]): Workout
 }
 `;
 
