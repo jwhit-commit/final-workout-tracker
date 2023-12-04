@@ -3,17 +3,12 @@ const { Schema, model } = require('mongoose');
 // code below creates the schema for the workout collection and sets the fields to be required
 const workoutSchema = new Schema({
     // day is set to the current date
-    id: {
-        type: Number,
-        required: true,
-        trim: true,
-    },
     day: {
         type: Date,
         default: () => new Date()
     },
     // defines the muscle group that was worked out
-    muscleGroup: {
+    bodyPart: {
         type: String,
         required: true,
         trim: true,
@@ -43,6 +38,16 @@ const workoutSchema = new Schema({
             },
             duration: {
                 type: Number,
+                required: true,
+                trim: true,
+            },
+            equipment: {
+                type: String,
+                required: true,
+                trim: true,
+            },
+            target: {
+                type: String,
                 required: true,
                 trim: true,
             },
