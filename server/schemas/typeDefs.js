@@ -1,7 +1,8 @@
 const typeDefs = `
 type User {
     _id: ID
-    username: String
+    firstName: String
+    lastName: String
     email: String
     password: String
     workouts: [Workout]
@@ -35,7 +36,7 @@ type Query {
 }
 
 type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addWorkout(bodyPart: String!, exercises: [Exercise]): Workout
     updateWorkout(_id: ID!, exercises: [Exercise]): Workout

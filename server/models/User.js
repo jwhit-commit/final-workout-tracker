@@ -3,10 +3,15 @@ const bcrypt = require('bcrypt');
 
 // the code below creates the schema for the user collection and sets the fields to be required
 const userSchema = new Schema({
-    // defines the username, and sets it to be unique, required, and trimmed
-    username: {
+    // defines the first name of the user, and sets it to be required and trimmed
+    firstName: {
         type: String,
-        unique: true,
+        required: true,
+        trim: true
+    },
+    // defines the last name of the user, and sets it to be required and trimmed
+    lastName: {
+        type: String,
         required: true,
         trim: true
     },

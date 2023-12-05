@@ -1,5 +1,5 @@
 import {
-    LOGIN_USER,
+    LOGIN,
     ADD_USER,
     ADD_WORKOUT,
     UPDATE_WORKOUT,
@@ -8,7 +8,7 @@ import {
 
 export const reducer = (state, action) => {
     switch (action.type) {
-        case LOGIN_USER:
+        case LOGIN:
             return {
                 ...state,
                 user: action.payload
