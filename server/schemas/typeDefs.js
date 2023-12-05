@@ -11,18 +11,20 @@ type User {
 type Workout {
     _id: ID
     day: String
-    bodyPart: String
   #  exercises: [Exercise]
 }
 
 input Exercise {
     name: String
-    sets: Int
+    sets: [SetInput]
+    equipment: String
+    target: String
+}
+
+input SetInput {
     reps: Int
     weight: Int
     duration: Int
-    equipment: String
-    target: String
 }
 
 type Auth {

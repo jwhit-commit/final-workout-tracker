@@ -36,71 +36,71 @@ mutation addWorkout($bodyPart: String!, $exercises: [Exercise]) {
     addWorkout(bodyPart: $bodyPart, exercises: $exercises){
         _id
         bodyPart
-        exercises{
+        exercises {
             name
-            sets
-            reps
-            weight
-            duration
-            equipment
+            sets {
+              reps
+              weight
+              duration
+            }
             target
+          }
         }
-    }
-}
-`;
+      }
+    `;
 
 export const UPDATE_WORKOUT = gql`
 mutation updateWorkout($id: ID!, $exercises: [Exercise]) {
     updateWorkout(_id: $id, exercises: $exercises){
         _id
         bodyPart
-        exercises{
+        exercises {
             name
-            sets
-            reps
-            weight
-            duration
-            equipment
+            sets {
+              reps
+              weight
+              duration
+            }
             target
+          }
         }
-    }
-}
-`;
+      }
+    `;
 
 export const REMOVE_WORKOUT = gql`
 mutation removeWorkout($id: ID!) {
     removeWorkout(_id: $id){
         _id
         bodyPart
-        exercises{
+        exercises {
             name
-            sets
-            reps
-            weight
-            duration
-            equipment
+            sets {
+              reps
+              weight
+              duration
+            }
             target
+          }
         }
-    }
-}
-`;
+      }
+    `;
 
 export const ADD_EXERCISE = gql`
-mutation addExercise($id: ID!, $exercise: Exercise) {
-    addExercise(_id: $id, exercise: $exercise){
-        _id
-        bodyPart
-        exercises{
-            name
-            sets
-            reps
-            weight
-            duration
-            equipment
-            target
+  mutation addExercise($id: ID!, $exercise: ExerciseInput) {
+    addExercise(_id: $id, exercise: $exercise) {
+      _id
+      bodyPart
+      exercises {
+        name
+        sets {
+          reps
+          weight
+          duration
         }
+        target
+      }
     }
-}
+  }
 `;
 
 export const REMOVE_EXERCISE = gql`
@@ -108,15 +108,15 @@ mutation removeExercise($id: ID!, $exercise: Exercise) {
     removeExercise(_id: $id, exercise: $exercise){
         _id
         bodyPart
-        exercises{
-            name
-            sets
+        exercises {
+          name
+          sets {
             reps
             weight
             duration
-            equipment
-            target
+          }
+          target
         }
+      }
     }
-}
-`;
+  `;

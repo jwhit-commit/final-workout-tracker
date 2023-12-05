@@ -83,7 +83,7 @@ const getExercisesbyName = async (query) => {
 
 const getExercisesbyBodyPart = async (bodypart) => {
     options.url = ('https://exercisedb.p.rapidapi.com/exercises/bodyPart/' + bodypart);
-
+    options.params = {limit: 20};
     try {
         const response = await axios.request(options);
         console.log(response.data);

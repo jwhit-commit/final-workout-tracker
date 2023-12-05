@@ -1,7 +1,13 @@
 import React from 'react'
+import ExerciseSearchForm from '../components/ExerciseSearchForm'
 
-export default function Profile() {
+function Profile() {
   return (
-    <div>Profile</div>
+    <div>
+      <h1 className="text-center text-3xl">Welcome to Profile</h1>
+      <ExerciseSearchForm />
+    </div>
   )
 }
+
+export default Profile;

@@ -7,50 +7,11 @@ const workoutSchema = new Schema({
         type: Date,
         default: () => new Date()
     },
-    // defines the muscle group that was worked out
-    bodyPart: {
-        type: String,
-        required: true,
-        trim: true,
-    },
     // defines the exercises that were performed
     exercises: [
         {
-            name: {
-                type: String,
-                required: true,
-                trim: true,
-            },
-            sets: {
-                type: Number,
-                required: true,
-                trim: true,
-            },
-            reps: {
-                type: Number,
-                required: true,
-                trim: true,
-            },
-            weight: {
-                type: Number,
-                required: true,
-                trim: true,
-            },
-            duration: {
-                type: Number,
-                required: true,
-                trim: true,
-            },
-            equipment: {
-                type: String,
-                required: true,
-                trim: true,
-            },
-            target: {
-                type: String,
-                required: true,
-                trim: true,
-            },
+            type: Schema.Types.ObjectId,
+            ref: 'Exercise'
         }
     ],
 });
