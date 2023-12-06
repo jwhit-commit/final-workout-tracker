@@ -1,5 +1,5 @@
 const { ConnectionStates } = require('mongoose');
-const { User, Workout} = require('../models');
+const { User, Workout, Product} = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -24,16 +24,8 @@ const resolvers = {
         // workout: async (parent, { _id }) => {
         //     return Workout.findOne({ _id: workoutId });
         // },
-        products: async (parent, { name }) => {
-            const params = {};
-      
-            if (name) {
-              params.name = {
-                $regex: name,
-              };
-            }
-      
-            return await Product.find(params);
+        products: async () => {
+          return await Product.find();
           },
         product: async (parent, { _id }) => {
             return await Product.findById(_id).populate('category');
