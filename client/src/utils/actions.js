@@ -1,0 +1,15 @@
+export const LOGIN = "LOGIN";
+export const ADD_USER = "ADD_USER";
+export const ADD_WORKOUT = "ADD_WORKOUT";
+export const UPDATE_WORKOUT = "UPDATE_WORKOUT";
+export const REMOVE_WORKOUT = "REMOVE_WORKOUT";
+
+
+export const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
+
+export const ADD_TO_CART = "ADD_TO_CART";
+export const ADD_MULTIPLE_TO_CART = "ADD_MULTIPLE_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const CLEAR_CART = "CLEAR_CART";
+export const UPDATE_CART_QUANTITY = "UPDATE_CART_QUANTITY";
+export const TOGGLE_CART = "TOGGLE_CART";
