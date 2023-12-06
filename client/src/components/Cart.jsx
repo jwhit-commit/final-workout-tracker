@@ -47,6 +47,7 @@ const Cart = () => {
   }
 
   function submitCheckout() {
+    console.log(state.cart)
     getCheckout({
       variables: { 
         products: [...state.cart],
