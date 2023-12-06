@@ -382,6 +382,7 @@ nav {
 
   .footer__container {
     grid-template-columns: 1fr 150px;
+    color: var(--white);
   }
 
   .footer__bar {
