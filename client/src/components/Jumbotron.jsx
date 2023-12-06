@@ -18,6 +18,7 @@ const Jumbotron = () => {
   );
 };
 
+
 export default Jumbotron;
 
 // Old jumbotron
