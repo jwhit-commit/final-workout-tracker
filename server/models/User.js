@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const Order = require('./Order');
 
 // the code below creates the schema for the user collection and sets the fields to be required
 const userSchema = new Schema({
@@ -34,7 +35,9 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Workout'
         }
-    ]
+    ],
+    // tracks user orders of products
+    orders: [Order.schema]
     });
 
 // set up pre-save middleware to create password
