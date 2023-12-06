@@ -9,22 +9,35 @@ type User {
 }
 
 type Workout {
-    _id: ID
-    day: String
-  #  exercises: [Exercise]
+    _id: ID!
+    name: String!
+    day: String!
+    exercises: [Exercise]!
 }
 
-input Exercise {
-    name: String
-    sets: [SetInput]
-    equipment: String
+
+type Exercise {
+    _id: ID!
+    name: String!
+    sets: [ExerciseSet!]!
+    
+}
+type ExerciseSet {
+    reps: Int!
+    weight: Int!
+    duration: Int!
+}
+
+input ExerciseInput {
+    name: String!
+    sets: [ExerciseSetInput!]!
     target: String
 }
 
-input SetInput {
-    reps: Int
-    weight: Int
-    duration: Int
+input ExerciseSetInput {
+    reps: Int!
+    weight: Int!
+    duration: Int!
 }
 
 type Auth {
@@ -40,8 +53,15 @@ type Query {
 type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addWorkout(bodyPart: String!, exercises: [Exercise]): Workout
-    updateWorkout(_id: ID!, exercises: [Exercise]): Workout
+    addExerciseToWorkout(workoutId: ID!, exercise: ExerciseInput!): Workout!
+    createWorkout(name: String!): Workout!
+
+    updateWorkout(_id: ID!, exercises: [ExerciseInput]!): Workout
+        addExercise(
+          name: String!
+          sets: [ExerciseInput]!
+          target: String!
+        ): Exercise
 }
 `;
 

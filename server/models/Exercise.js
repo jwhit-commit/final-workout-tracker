@@ -25,7 +25,6 @@ const exerciseSchema = new Schema({
     }],
     target: {
         type: String,
-        required: true,
         trim: true,
     },
 });

@@ -1,0 +1,5 @@
+export const LOGIN = "ADD_USER"
+export const ADD_WORKOUT = "ADD_WORKOUT"
+export const UPDATE_WORKOUT = "UPDATE_WORKOUT"
+export const REMOVE_WORKOUT = "REMOVE_WORKOUT"
+export const ADD_EXERCISE = "ADD_EXERCISE"

@@ -1,9 +1,9 @@
 import {
-    LOGIN,
     ADD_USER,
     ADD_WORKOUT,
     UPDATE_WORKOUT,
-    REMOVE_WORKOUT
+    REMOVE_WORKOUT,
+    ADD_EXERCISE
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -42,6 +42,11 @@ export const reducer = (state, action) => {
                     return workout._id !== action.payload._id;
                 })
             };
+        case ADD_EXERCISE:
+            return {
+                ...state,
+                exercises: [...state.exercises, action.payload]
+    };
         default:
             return state;
     }

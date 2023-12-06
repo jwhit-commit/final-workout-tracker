@@ -3,6 +3,11 @@ const { Schema, model } = require('mongoose');
 // code below creates the schema for the workout collection and sets the fields to be required
 const workoutSchema = new Schema({
     // day is set to the current date
+    name: {
+        type: String,
+        required: true,
+        trim: true
+    },
     day: {
         type: Date,
         default: () => new Date()
