@@ -1,5 +1,6 @@
 import React from "react";
 import Jumbotron from "../components/Jumbotron";
+import Body from "../components/Body";
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
           <ExploreCard icon="ri-shopping-basket-fill" title="Weight Gain" description="Designed for individuals, our program offers an effective approach to gaining weight in a sustainable manner." />
         </div>
       </section>
+      <Body />
     </div>
   );
 };
@@ -36,6 +38,7 @@ const ExploreCard = ({ icon, title, description }) => {
 };
 
 export default Home;
+
 
 
 // Old Home
