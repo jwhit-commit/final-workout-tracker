@@ -10,17 +10,15 @@ export const QUERY_USER = gql`
             workouts {
                 _id
                 day
-                bodyPart
                 exercises {
-                    _id
                     name
-                    sets
-                    reps
-                    weight
-                    duration
-                    equipment
+                    sets {
+                      reps
+                      weight
+                      duration
+                    }
                     target
-                }
+                  }
             }
         }
     }
@@ -31,17 +29,15 @@ export const QUERY_WORKOUTS = gql`
         workouts {
             _id
             day
-            bodyPart
             exercises {
-                _id
                 name
-                sets
-                reps
-                weight
-                duration
-                equipment
+                sets {
+                  reps
+                  weight
+                  duration
+                }
                 target
-            }
+              }
         }
     }
 `;

@@ -10,20 +10,35 @@ type User {
 }
 
 type Workout {
-    _id: ID
-    day: String
-    bodyPart: String
-  #  exercises: [Exercise]
+    _id: ID!
+    name: String!
+    day: String!
+    exercises: [Exercise]!
 }
 
-input Exercise {
-    name: String
-    sets: Int
-    reps: Int
-    weight: Int
-    duration: Int
-    equipment: String
+
+type Exercise {
+    _id: ID!
+    name: String!
+    sets: [ExerciseSet!]!
+    
+}
+type ExerciseSet {
+    reps: Int!
+    weight: Int!
+    duration: Int!
+}
+
+input ExerciseInput {
+    name: String!
+    sets: [ExerciseSetInput!]!
     target: String
+}
+
+input ExerciseSetInput {
+    reps: Int!
+    weight: Int!
+    duration: Int!
 }
 
 type Product {
@@ -71,8 +86,15 @@ type Query {
 type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addExerciseToWorkout(workoutId: ID!, exercise: ExerciseInput!): Workout!
+    createWorkout(name: String!): Workout!
+    updateWorkout(_id: ID!, exercises: [ExerciseInput]!): Workout
+        addExercise(
+          name: String!
+          sets: [ExerciseInput]!
+          target: String!
+        ): Exercise
     addWorkout(bodyPart: String!, exercises: [Exercise]): Workout
-    updateWorkout(_id: ID!, exercises: [Exercise]): Workout
     addOrder(products: [ID]!): Order
     updateProduct(_id: ID!, quantity: Int!): Product
 }

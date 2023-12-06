@@ -1,9 +1,9 @@
 import {
-    LOGIN,
     ADD_USER,
     ADD_WORKOUT,
     UPDATE_WORKOUT,
     REMOVE_WORKOUT,
+    ADD_EXERCISE
     UPDATE_PRODUCTS,
     ADD_TO_CART,
     UPDATE_CART_QUANTITY,
@@ -49,6 +49,11 @@ export const reducer = (state, action) => {
                     return workout._id !== action.payload._id;
                 })
             };
+        case ADD_EXERCISE:
+            return {
+                ...state,
+                exercises: [...state.exercises, action.payload]
+    };
         case UPDATE_PRODUCTS:
         return {
             ...state,
