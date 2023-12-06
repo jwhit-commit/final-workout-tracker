@@ -6,6 +6,7 @@ type User {
     email: String
     password: String
     workouts: [Workout]
+    orders: [Order]
 }
 
 type Workout {
@@ -39,15 +40,46 @@ input ExerciseSetInput {
     weight: Int!
     duration: Int!
 }
+type Product {
+    _id: ID
+    name: String
+    description: String
+    image: String
+    quantity: Int
+    price: Float
+  }
+
+type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
 
 type Auth {
     token: ID!
     user: User
 }
 
+input ProductInput {
+    _id: ID
+    purchaseQuantity: Int
+    name: String
+    image: String
+    price: Float
+    quantity: Int
+  }
+
+type Checkout {
+    session: ID
+  }
+
 type Query {
     users: [User]
     user(username: String!): User
+    products: [Product]
+    product(_id: ID!): Product
+    order(_id: ID!): Order
+    checkout(products: [ProductInput]): Checkout
 }
 
 type Mutation {
@@ -62,6 +94,8 @@ type Mutation {
           sets: [ExerciseInput]!
           target: String!
         ): Exercise
+    addOrder(products: [ID]!): Order
+    updateProduct(_id: ID!, quantity: Int!): Product
 }
 `;
 

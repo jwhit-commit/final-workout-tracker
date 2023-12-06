@@ -7,6 +7,9 @@ import Home from './pages/Home';
 import NotFound from './components/NotFound.jsx';
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
+import Shop from './pages/Shop.jsx';
+import Success from './pages/Success.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -32,7 +35,19 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login/>
-      }
+      },
+      {
+        path: '/shop',
+        element: <Shop/>
+      },
+      {
+        path: '/success',
+        element: <Success/>
+      },
+      // {
+      //   path: '/products/:id',
+      //   element: <Detail />
+      // },
     ],
   },
 ]);
