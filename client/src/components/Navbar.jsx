@@ -6,7 +6,6 @@ import '../styles/styles.css';
 // New Navbar
 const NavBar = () => {
   const isLoggedIn = Auth.loggedIn();
-<<<<<<< HEAD
   return (
     <nav className="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
       <div className="container-fluid">
@@ -82,8 +81,6 @@ const NavBar = () => {
               </ul>
             </li>
           </ul>
-=======
->>>>>>> main
 
   return (
     <nav>

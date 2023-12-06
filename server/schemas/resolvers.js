@@ -85,15 +85,17 @@ const resolvers = {
 
     Mutation: {
         createWorkout: async (_, { name}, context) => {
+            console.log(context);
+            if(!context.user) {
+                throw new Error("User not authenticated");
+            }
             try {
                 const workout = new Workout({
                     name,
                     day: new Date().toISOString(),
                     exercises: []
                 })
-                await User.findByIdAndUpdate(
-
-                )
+                
                 await workout.save();
                 return workout;
             } catch(error) {
