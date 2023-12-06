@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import NotFound from './components/NotFound.jsx';
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
+import Shop from './pages/Shop.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
