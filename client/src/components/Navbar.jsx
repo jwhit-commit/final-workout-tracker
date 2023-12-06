@@ -13,7 +13,7 @@ const NavBar = () => {
         <li className="link">
           <a href="/home">Home</a>
         </li>
-        <li className="link">
+        {/* <li className="link">
           <a href="#">Program</a>
         </li>
         <li className="link">
@@ -24,11 +24,14 @@ const NavBar = () => {
         </li>
         <li className="link">
           <a href="#">Community</a>
-        </li>
+        </li> */}
         {isLoggedIn ? (
           <>
             <li className="link">
               <a href="/profile">Profile</a>
+            </li>
+            <li className="link">
+              <a href="/shop">Shop</a>
             </li>
             <li className="link">
               <a href="/" onClick={() => Auth.logout()}>Logout</a>
