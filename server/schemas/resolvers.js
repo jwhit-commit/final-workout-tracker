@@ -1,6 +1,7 @@
 const { ConnectionStates } = require('mongoose');
-const { User, Workout, Product} = require('../models');
+const { User, Workout, Product, Order} = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
     Query: {
@@ -44,6 +45,8 @@ const resolvers = {
           },
 
         checkout: async (parent, args, context) => {
+          console.log(context.user);
+          console.log(args)
             const url = new URL(context.headers.referer).origin;
             // We map through the list of products sent by the client to extract the _id of each item and create a new Order.
             await Order.create({ products: args.products.map(({ _id }) => _id) });
@@ -71,7 +74,7 @@ const resolvers = {
               success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
               cancel_url: `${url}/`,
             });
-      
+            console.log(session);
             return { session: session.id };
           },
     },

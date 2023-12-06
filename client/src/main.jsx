@@ -8,6 +8,7 @@ import NotFound from './components/NotFound.jsx';
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';
 import Shop from './pages/Shop.jsx';
+import Success from './pages/Success.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/shop',
         element: <Shop/>
+      },
+      {
+        path: '/success',
+        element: <Success/>
       },
       // {
       //   path: '/products/:id',

@@ -62,7 +62,7 @@ type Checkout {
 type Query {
     users: [User]
     user(username: String!): User
-    products(name: String): [Product]
+    products: [Product]
     product(_id: ID!): Product
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
