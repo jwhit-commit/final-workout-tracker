@@ -12,7 +12,7 @@ const Jumbotron = () => {
           fitter, and more confident you. Sign up for 'Make Your Body Shape' now
           and witness the incredible transformation your body is capable of!
         </p>
-        <button className="btn">Get Started</button>
+        <button className="btn"><a href="/Signup">Get Started</a></button>
       </div>
     </header>
   );

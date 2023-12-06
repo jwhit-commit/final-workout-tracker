@@ -13,9 +13,6 @@ const NavBar = () => {
         <li className="link">
           <a href="/home">Home</a>
         </li>
-        {/* <li className="link">
-          <a href="#">Program</a>
-        </li>
         <li className="link">
           <a href="#">Service</a>
         </li>
@@ -24,15 +21,15 @@ const NavBar = () => {
         </li>
         <li className="link">
           <a href="#">Community</a>
-        </li> */}
+        </li>
         {isLoggedIn ? (
           <>
             <li className="link">
               <a href="/profile">Profile</a>
             </li>
             <li className="link">
-              <a href="/shop">Shop</a>
-            </li>
+          <a href="/exercise">Exercise Forms</a>
+          </li>
             <li className="link">
               <a href="/" onClick={() => Auth.logout()}>Logout</a>
             </li>
