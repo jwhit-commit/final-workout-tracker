@@ -25,6 +25,9 @@ const NavBar = () => {
         <li className="link">
           <a href="#">Community</a>
         </li>
+        <li className="link">
+          <a href="/shop">Shop</a>
+        </li>
         {isLoggedIn ? (
           <>
             <li className="link">
@@ -81,7 +84,7 @@ export default NavBar;
 //               <a className="nav-link active" aria-current="page" href="/home">
 //                 Home
 //               </a>
-//             </li>   
+//             </li>
 //       {isLoggedIn ? (
 //         <>
 //             <li className="nav-item">
