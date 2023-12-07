@@ -21,6 +21,7 @@ type Exercise {
     _id: ID!
     name: String!
     sets: [ExerciseSet]!
+    sets: [ExerciseSet!]!
     
 }
 type ExerciseSet {
@@ -32,6 +33,7 @@ type ExerciseSet {
 input ExerciseInput {
     name: String!
     sets: [ExerciseSetInput]
+    sets: [ExerciseSetInput!]!
     target: String
 }
 
@@ -40,6 +42,7 @@ input ExerciseSetInput {
     weight: Int!
     duration: Int!
 }
+
 type Product {
     _id: ID
     name: String
@@ -87,6 +90,15 @@ type Mutation {
     login(email: String!, password: String!): Auth
     addExerciseToWorkout(workoutId: ID!, exercise: ExerciseInput): Workout
     createWorkout(name: String!): Workout!
+    addExerciseToWorkout(workoutId: ID!, exercise: ExerciseInput!): Workout!
+    createWorkout(name: String!): Workout!
+    updateWorkout(_id: ID!, exercises: [ExerciseInput]!): Workout
+        addExercise(
+          name: String!
+          sets: [ExerciseInput]!
+          target: String!
+        ): Exercise
+    addWorkout(bodyPart: String!, exercises: [Exercise]): Workout
     addOrder(products: [ID]!): Order
     updateProduct(_id: ID!, quantity: Int!): Product
 }

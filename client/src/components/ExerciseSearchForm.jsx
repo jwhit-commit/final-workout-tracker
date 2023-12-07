@@ -1,7 +1,7 @@
 // export default WorkoutContainer;
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-
+import { ADD_EXERCISE, ADD_WORKOUT } from '../utils/mutations';
 import { fetchExercisesByBodyPart } from '../utils/workoutUtils';
 
 
@@ -239,3 +239,7 @@ const ExerciseSearchForm = () => {
     };
     
     export default WorkoutContainer;
+    
+
+    
+    export default ExerciseSearchForm;

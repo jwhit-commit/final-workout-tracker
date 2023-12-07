@@ -9,6 +9,7 @@ function Profile() {
       <h1 className="text-center text-3xl">Welcome to Profile</h1>
       <AddWorkout />
       {/* <UserWorkouts /> */}
+
     </div>
   )
 }

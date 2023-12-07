@@ -1,5 +1,7 @@
 const { ConnectionStates, ObjectId} = require('mongoose');
 const { User, Workout, Product, Order} = require('../models');
+const { ConnectionStates } = require('mongoose');
+const { User, Workout, Product, Order, Exercise } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const Exercise = require('../models/Exercise');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
@@ -109,6 +111,16 @@ const resolvers = {
                     { new: true}
                 )
                
+            try {
+                const workout = new Workout({
+                    name,
+                    day: new Date().toISOString(),
+                    exercises: []
+                })
+                await User.findByIdAndUpdate(
+
+                )
+                await workout.save();
                 return workout;
             } catch(error) {
                 console.log(error);
@@ -140,6 +152,32 @@ const resolvers = {
                 throw new Error('Failed to add exercise to workout')
             }
         },
+        // addWorkout: async (parent, { exercises }, context) => {
+        //     // Check if the user is authenticated
+        //     if (context.user) {
+        //         // Create the workout
+        //         const workout = await Workout.create({ exercises });
+    
+        //         // Associate the workout with the user
+        //         await User.findByIdAndUpdate(
+        //             { _id: context.user._id },
+        //             { $push: { workouts: workout._id } }
+        //         );
+    
+        //         return workout;
+        //     }
+        //     // If not authenticated, throw an error
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
+        // updateWorkout: async (parent, { _id, exercises }) => {
+        //     const updatedWorkout = await Workout.findOneAndUpdate(
+        //         { _id },
+        //         { exercises },
+        //         { new: true }
+        //     );
+        //     return updatedWorkout;
+        // },
+
         addUser: async (parent, { firstName, lastName, email, password }) => {
             const user = await User.create({ firstName, lastName, email, password });
             const token = signToken(user);
@@ -157,6 +195,17 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+        // addExercise: async (parent, { name, sets, target }, context) => {
+        //     // Check if the user is authenticated
+        //     if (context.user) {
+        //         // Create the exercise
+        //         const exercise = await Exercise.create({ name, sets, target });
+                
+        //         return exercise;
+        //     }
+        //     // If not authenticated, throw an error
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
         addOrder: async (parent, { products }, context) => {
             if (context.user) {
               const order = new Order({ products });
