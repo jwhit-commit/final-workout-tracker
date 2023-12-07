@@ -31,42 +31,8 @@ mutation addUser(
 }
 `;
 
-// Mutation for adding a Workout
-export const ADD_WORKOUT = gql`
-mutation addWorkout($exercises: [ID!]!) {
-    addWorkout(exercises: $exercises) {
-        _id
-        day
-        exercises {
-            _id
-            name
-            sets {
-                reps
-                weight
-                duration
-            }
-            target
-        }
-    }
-}
-`;
 
-export const UPDATE_WORKOUT = gql`
-mutation updateWorkout($id: ID!, $exercises: [Exercise]) {
-    updateWorkout(_id: $id, exercises: $exercises){
-        _id
-        exercises {
-            name
-            sets {
-              reps
-              weight
-              duration
-            }
-            target
-          }
-        }
-      }
-    `;
+
 
     export const CREATE_WORKOUT_MUTATION = gql`
     mutation createWorkout($name: String!) {    
@@ -89,7 +55,7 @@ mutation updateWorkout($id: ID!, $exercises: [Exercise]) {
     `;
 
     export const ADD_EXERCISE_TO_WORKOUT_MUTATION = gql`
-    mutation addExerciseToWorkout($workoutId: ID!, $exercise: ExerciseInput!) {
+    mutation addExerciseToWorkout($workoutId: ID!, $exercise: ExerciseInput) {
         addExerciseToWorkout(workoutId: $workoutId, exercise: $exercise) {
             _id
             name
@@ -126,45 +92,6 @@ mutation updateWorkout($id: ID!, $exercises: [Exercise]) {
 //     `;
 
 // Mutation for adding an Exercise
-export const ADD_EXERCISE = gql`
-mutation addExercise(
-    $name: String!,
-    $sets: [ExerciseSetInput]!,
-    $target: String!
-) {
-    addExercise(
-        name: $name,
-        sets: $sets,
-        target: $target
-    ) {
-        _id
-        name
-        sets {
-            reps
-            weight
-            duration
-        }
-        target
-    }
-}
-`;
-
-export const REMOVE_EXERCISE = gql`
-mutation removeExercise($id: ID!, $exercise: Exercise) {
-    removeExercise(_id: $id, exercise: $exercise){
-        _id
-        exercises {
-          name
-          sets {
-            reps
-            weight
-            duration
-          }
-          target
-        }
-      }
-    }
-  `;
 
 
 
@@ -182,3 +109,4 @@ export const ADD_ORDER = gql`
     }
   }
 `;
+

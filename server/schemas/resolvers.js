@@ -1,20 +1,26 @@
+const { ConnectionStates, ObjectId} = require('mongoose');
+const { User, Workout, Product, Order} = require('../models');
 const { ConnectionStates } = require('mongoose');
 const { User, Workout, Product, Order, Exercise } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const Exercise = require('../models/Exercise');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
     Query: {
         user: async (parent, args, context) => {
             if (context.user) {
-                const user = await User.findOne({ _id: context.user._id })
-                .select('-__v -password')
-                .populate('workouts')
-                .populate('orders');
-                user.workouts.sort((a, b) => b.createdAt - a.createdAt);
-                user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+                const user = await User.findById(context.user._id);
+                console.log(user);
+                console.log(context.user._id);
+               
 
-                return user;
+                // .populate('workouts')
+                // .populate('orders');
+                // user.workouts.sort((a, b) => b.createdAt - a.createdAt);
+                // user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+                //return user;
             }
             throw new AuthenticationError('Not logged in');
         },
@@ -77,10 +83,34 @@ const resolvers = {
             console.log(session);
             return { session: session.id };
           },
+    //     user: async (_, args, context) => {
+    //         if(context.user) {
+    //             const user = await User.findById(context.user._id).populate({
+    //                 path: 'workouts.exercises',
+    //             });
+    //             return user;
+    //         } else {
+    //             throw new AuthenticationError('Not logged in');
+    //         }
+    // },
     },
-
     Mutation: {
         createWorkout: async (_, { name}, context) => {
+            if(!context.user) {
+                throw new Error("User not authenticated");
+            }
+            try {
+                const workout = await Workout.create({
+                    name
+                    // day: new Date().toISOString(),
+                    // exercises: []
+                })
+                await User.findByIdAndUpdate(
+                    context.user._id,
+                    { $push: { workouts: workout._id } },
+                    { new: true}
+                )
+               
             try {
                 const workout = new Workout({
                     name,
@@ -95,6 +125,31 @@ const resolvers = {
             } catch(error) {
                 console.log(error);
                 throw new Error('Failed to create workout')
+            }
+        },
+        addExerciseToWorkout: async (_, { workoutId, exercise }, context) => {
+            if(!context.user) {
+                throw new Error("User not authenticated");
+            }
+            try {
+                // console.log(exercise, workoutId);
+                const exerciseData = await Exercise.create(exercise);
+                console.log(exerciseData, workoutId);
+                const updatedWorkout = await Workout.findByIdAndUpdate(
+                    workoutId,
+                    { $push: { exercises: exerciseData._id } },
+                    { new: true}
+                ).populate('exercises');
+                // if(!updatedWorkout) {
+                //     throw new Error("Workout not found");
+                // }
+                console.log(updatedWorkout);
+               
+                
+                return updatedWorkout;
+            } catch (error) {
+                console.log(error);
+                throw new Error('Failed to add exercise to workout')
             }
         },
         // addWorkout: async (parent, { exercises }, context) => {
