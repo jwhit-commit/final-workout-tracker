@@ -58,10 +58,11 @@ const Body = () => {
           unbeatable pricing plans. Let's sweat, achieve, and conquer together!
         </p>
         <div className="footer__col">
-          <h4>Contact</h4>
-          <a href="#">Contact Us</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms & Conditions</a>
+          <h4>Contact Us</h4>
+          <a href="https://github.com/Peaky00">Christopher Kirkley</a>
+          <a href="https://github.com/taycannon">Taylor Cannon</a>
+          <a href="https://github.com/jwhit-commit">Joshua Whit</a>
+          <a href="https://github.com/dsullivan42">Daniel Sullivan</a>
         </div>
       </footer>
 

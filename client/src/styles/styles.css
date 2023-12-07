@@ -1,6 +1,6 @@
 /* All the color */
 :root {
-  --primary-color: #111317;
+  --primary-color: #8B8787;
   --primary-color-light: #1f2125;
   --primary-color-extra-light: #35373b;
   --secondary-color: #f9ac54;
@@ -382,6 +382,7 @@ nav {
 
   .footer__container {
     grid-template-columns: 1fr 150px;
+    color: var(--white);
   }
 
   .footer__bar {

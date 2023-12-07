@@ -1,8 +1,8 @@
-# Workout Tracker
+# FitVibe Pro
 
 ## Overview
 
-The Workout Tracker is a simple web application designed to help users track their fitness activities and progress. Whether you're a seasoned athlete or just getting started with your fitness journey, this app can assist you in managing your workouts, setting goals, and monitoring your achievements.
+The FitVibe Pro is a simple web application designed to help users track their fitness activities and progress. Whether you're a seasoned athlete or just getting started with your fitness journey, this app can assist you in managing your workouts, setting goals, and monitoring your achievements.
 
 ## Features
 
