@@ -24,8 +24,23 @@ export const QUERY_USER = gql`
     }
 `;
 
+export const QUERY_EXERCISES = gql`
+    query exercises {
+        exercises {
+            _id
+            name
+            sets {
+                reps
+                weight
+                duration
+            }
+            target
+        }
+    }
+`;
+
 export const QUERY_WORKOUTS = gql`
-    query getWorkouts {
+    query workouts {
         workouts {
             _id
             day
